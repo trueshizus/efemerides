@@ -1,3 +1,15 @@
+import { Footer } from "@/components/footer";
+import { Button } from "@/components/ui/button";
+import {
+  Drawer,
+  DrawerClose,
+  DrawerContent,
+  DrawerDescription,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerTrigger,
+} from "@/components/ui/drawer";
 import { ChartCircle, TableDocument } from "iconic-react";
 import Link from "next/link";
 
@@ -9,14 +21,14 @@ export default function Home() {
       <h1 className="text-center text-3xl my-8 text-slate-400">Efemérides</h1>
 
       <Zodiac />
-      <Sheet />
+      <Footer />
     </main>
   );
 }
 
 const Navigation = () => {
   return (
-    <nav className="w-full border-b border-slate-400 text-slate-400">
+    <nav className="w-full border-b-2 border-green-500">
       <ul className="flex center bg-slate-800 justify-evenly ">
         <li className="border-b-2 border-slate-400">
           <Link href="/" className="flex flex-col items-center py-2">
@@ -35,9 +47,23 @@ const Navigation = () => {
   );
 };
 
-const Sheet = () => {
-  return <div>Sheet</div>;
-};
+const Sheet = () => (
+  <Drawer>
+    <DrawerTrigger>Open</DrawerTrigger>
+    <DrawerContent>
+      <DrawerHeader>
+        <DrawerTitle>Are you absolutely sure?</DrawerTitle>
+        <DrawerDescription>This action cannot be undone.</DrawerDescription>
+      </DrawerHeader>
+      <DrawerFooter>
+        <Button>Submit</Button>
+        <DrawerClose>
+          <Button variant="outline">Cancel</Button>
+        </DrawerClose>
+      </DrawerFooter>
+    </DrawerContent>
+  </Drawer>
+);
 
 const Zodiac = () => {
   const celestials = [
