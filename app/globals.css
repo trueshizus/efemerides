@@ -26,74 +26,9 @@
   }
 }
 
-body {
-  background-image: url("data:image/svg+xml,<svg viewBox='0 0 250 250' xmlns='http://www.w3.org/2000/svg'><filter id='noiseFilter'><feTurbulence type='fractalNoise' baseFrequency='4' numOctaves='3' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(#noiseFilter)'/></svg>");
-
-  background: radial-gradient(
-    circle,
-    rgb(var(--ligth), 0.8) 0%,
-    rgb(var(--semitone), 0.8) 52%,
-    rgb(var(--dark), 0.8) 90%
-  );
-}
-
 /* Zodiac */
 .zodiac {
-  width: 50rem;
-  height: 50rem;
   stroke: rgb(var(--lines));
-}
-
-.circle {
-  width: var(--size);
-  height: var(--size);
-  border-radius: 100%;
-  border: solid 1px black;
-}
-
-/* .wheel {
-  background: conic-gradient(
-    red 0 30deg,
-    yellow 30deg 60deg,
-    green 60deg 90deg,
-    blue 90deg 120deg,
-    purple 120deg 150deg,
-    pink 150deg 180deg,
-    red 180deg 210deg,
-    yellow 210deg 240deg,
-    green 240deg 270deg,
-    blue 270deg 300deg,
-    purple 300deg 330deg,
-    pink 330deg 389deg
-  );
-} */
-
-.wheel {
-  /* opacity: 0.5; */
-  background: repeating-radial-gradient(
-    circle at center,
-    pink 0% 5%,
-    red 5% 25%,
-    orange 25% 35%,
-    blue 35% 45%,
-    yellow 45% 100%
-  );
-}
-.quadrants {
-  background: repeating-conic-gradient(
-    white 0deg 30deg,
-    rgb(209, 209, 209) 30deg 60deg
-  );
-}
-
-.outer {
-  --size: 25rem;
-  /* background-color: rgb(41, 160, 128); */
-}
-
-.inner {
-  --size: 8rem;
-  background-color: white;
 }
 
 /* Celestials */
@@ -102,109 +37,89 @@ body {
   transform-origin: 50% 50%;
   fill: var(--color);
   stroke: rgb(var(--lines));
-  filter: drop-shadow(var(--shadow-x) var(--shadow-y) 1px rgb(0 0 0 / 0.4));
-  animation: rotate-shadow 2s infinite linear;
+}
+
+.celestial-body {
+  box-shadow: inset 10px 0 10px 10px 10px #000000;
+}
+
+.celestial-shadow {
+  box-shadow: inset 10px 0 10px 10px 10px #000000;
+  /* filter: blur(2px); */
 }
 
 .sun {
+  -size: 10px;
   --color: yellow;
-  animation: circle 9s linear infinite;
+  /* animation: translation 9s linear infinite; */
 }
 
 .mercury {
   --size: 10px;
   --distance: -200px;
   --color: grey;
-  animation: circle 2s linear infinite;
+  animation: translation 2s linear infinite;
 }
 
 .venus {
   --size: 15px;
   --distance: -180px;
   --color: orange;
-  animation: circle 4s linear infinite;
+  animation: translation 4s linear infinite;
 }
 
 .earth {
   --color: rgb(42, 56, 169);
-  animation: circle 5s linear infinite;
+  animation: translation 5s linear infinite;
 }
 
 .moon {
   --size: 0px;
   --distance: -10px;
   --color: grey;
-  animation: circle 8s linear infinite;
+  animation: translation 8s linear infinite;
 }
 
 .mars {
   --size: 30px;
   --distance: -120px;
   --color: red;
-  animation: circle 6s linear infinite;
+  animation: translation 6s linear infinite;
 }
 
 .jupiter {
   --size: 50px;
   --distance: -80px;
   --color: orange;
-  animation: circle 7s linear infinite;
+  animation: translation 7s linear infinite;
 }
 
 .saturn {
   --size: 45px;
   --distance: -60px;
   --color: rgb(41, 160, 128);
-  animation: circle 9s linear infinite;
+  animation: translation 9s linear infinite;
 }
 
 .uranus {
   --size: 35px;
   --distance: -40px;
   --color: lightblue;
-  animation: circle 10s linear infinite;
+  animation: translation 10s linear infinite;
 }
 
 .neptune {
   --size: 25px;
   --distance: -20px;
   --color: blue;
-  animation: circle 11s linear infinite;
+  animation: translation 11s linear infinite;
 }
 
-@keyframes circle {
+@keyframes translation {
   0% {
     transform: rotate(0deg);
   }
   100% {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes rotate-shadow {
-  0% {
-    --shadow-x: 2px;
-    --shadow-y: 2px;
-    transform: rotate(0deg);
-  }
-  25% {
-    --shadow-x: -2px;
-    --shadow-y: 2px;
-    transform: rotate(90deg);
-  }
-  50% {
-    --shadow-x: -2px;
-    --shadow-y: -2px;
-    transform: rotate(180deg);
-  }
-  75% {
-    --shadow-x: 2px;
-    --shadow-y: -2px;
-    transform: rotate(270deg);
-  }
-  100% {
-    --shadow-x: 2px;
-    --shadow-y: 2px;
     transform: rotate(360deg);
   }
 }

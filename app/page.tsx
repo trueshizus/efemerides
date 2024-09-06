@@ -1,19 +1,59 @@
+import { ChartCircle, TableDocument } from "iconic-react";
+import Link from "next/link";
+
 export default function Home() {
   return (
-    <main className="min-h-screen grid place-content-center">
-      <div className="pile">
-        <Zodiac />
-        {/* <Celestials /> */}
-      </div>
+    <main className="min-h-screen bg-slate-800">
+      <Navigation />
+
+      <h1 className="text-center text-3xl my-8 text-slate-400">Efemérides</h1>
+
+      <Zodiac />
+      <Sheet />
     </main>
   );
 }
 
-const Zodiac = () => {
+const Navigation = () => {
   return (
-    <figure className="pile zodiac">
-      <svg viewBox="0 0 100 100">
-        <g stroke-width="0.25" fill="none">
+    <nav className="w-full border-b border-slate-400 text-slate-400">
+      <ul className="flex center bg-slate-800 justify-evenly ">
+        <li className="border-b-2 border-slate-400">
+          <Link href="/" className="flex flex-col items-center py-2">
+            <ChartCircle size="24" />
+            <span className="text-sm mt-1">Chart</span>
+          </Link>
+        </li>
+        <li>
+          <Link href="/" className="flex flex-col items-center py-2">
+            <TableDocument size="24" />
+            <span className="text-sm mt-1">Table</span>
+          </Link>
+        </li>
+      </ul>
+    </nav>
+  );
+};
+
+const Sheet = () => {
+  return <div>Sheet</div>;
+};
+
+const Zodiac = () => {
+  const celestials = [
+    { name: "sun", distance: 25, size: 4 },
+    // { name: "earth", distance: 0, size: 3, indicator: false },
+    // { name: "mars", distance: 20, size: 1 },
+    // { name: "moon", distance: 10, size: 1 },
+    // { name: "jupiter", distance: 20, size: 1.5 },
+    // { name: "saturn", distance: 20, size: 1.3 },
+    // { name: "uranus", distance: 20, size: 1.2 },
+    // { name: "neptune", distance: 20, size: 1.1 },
+  ];
+  return (
+    <figure className="pile zodiac w-full h-full">
+      <svg className="w-full h-full" viewBox="0 0 100 100">
+        <g strokeWidth="0.25" fill="none">
           <circle cx="50" cy="50" r="48" />
           <circle cx="50" cy="50" r="40" />
           <circle cx="50" cy="50" r="38" />
@@ -22,10 +62,9 @@ const Zodiac = () => {
           <circle cx="50" cy="50" r="5" />
         </g>
         <DashCircle />
-        <Celestial name="sun" distance={25} size={4} />
-        <Celestial name="earth" distance={0} size={3} indicator={false} />
-        <Celestial name="mars" distance={20} size={1} />
-        {/* <Celestials /> */}
+        {celestials.map((celestial) => (
+          <Celestial key={celestial.name} {...celestial} />
+        ))}
       </svg>
     </figure>
   );
@@ -80,7 +119,24 @@ const Celestial = ({
   indicator?: boolean;
 }) => (
   <g className={`celestial ${name}`}>
-    {indicator && <line x1="12" y1="50" x2="35" y2="50" stroke-width=".05" />}
-    <circle cx={50 - distance} cy="50" r={size} stroke="none" />
+    {indicator && (
+      <>
+        <line x1="12" y1="50" x2="35" y2="50" strokeWidth=".05" />
+        <circle
+          cx={50 - distance - 1}
+          cy="50"
+          r={1.2 * size}
+          stroke="none"
+          className="celestial-shadow"
+        />
+      </>
+    )}
+    <circle
+      cx={50 - distance}
+      cy="50"
+      r={size}
+      stroke="none"
+      className="celestial-body"
+    />
   </g>
 );
