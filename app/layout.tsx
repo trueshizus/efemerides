@@ -23,7 +23,7 @@ export default function RootLayout({
           <Aspects />
         </section>
 
-        <section className=" w-full h-full transition duration-200	peer-has-[:focus]:brightness-50 peer-has-[:focus]:blur-sm  min-h-screen bg-slate-800 peer-checked/section:bg-red-500 peer-checked/section:blur-m ">
+        <section className="overflow-hidden w-full h-full transition duration-200	peer-has-[:focus]:brightness-50 peer-has-[:focus]:blur-sm  min-h-screen bg-slate-800 peer-checked/section:bg-red-500 peer-checked/section:blur-m ">
           <Navigation />
           {children}
         </section>

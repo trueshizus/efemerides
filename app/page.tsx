@@ -15,7 +15,7 @@ import Link from "next/link";
 export default function Home() {
   return (
     <main>
-      <h1 className="my-8 text-3xl text-center text-slate-400">Efemérides</h1>
+      <h1 className="my-8 text-2xl text-center text-slate-400">Efemérides</h1>
 
       <Zodiac />
     </main>
