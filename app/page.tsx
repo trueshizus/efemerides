@@ -14,7 +14,7 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <main>
+    <main style={{ viewTransitionName: "page-content" }}>
       <h1 className="my-8 text-2xl text-center text-slate-400">Efemérides</h1>
 
       <Zodiac />

@@ -13,7 +13,10 @@ export const Navigation = () => {
   const pathname = usePathname();
 
   return (
-    <nav className="w-full pt-2 border-b-2 border-slate-600">
+    <nav
+      className="w-full pt-2 border-b-2 border-slate-600"
+      style={{ viewTransitionName: "static-nav" }}
+    >
       <ul className="flex justify-evenly bg-slate-800">
         {navItems.map(({ href, label, icon }) => {
           const isActive = pathname === href;
