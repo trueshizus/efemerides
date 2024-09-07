@@ -6,6 +6,7 @@
   --ligth: 147, 203, 255;
   --semitone: 79, 133, 188;
   --dark: 0, 51, 111;
+  --background: rgb(30 41 59);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -14,7 +15,12 @@
     --ligth: 147, 203, 255;
     --semitone: 79, 133, 188;
     --dark: 0, 51, 111;
+    --background: rgb(30 41 59);
   }
+}
+
+body {
+  background-color: var(--background);
 }
 /* Layout */
 .pile {

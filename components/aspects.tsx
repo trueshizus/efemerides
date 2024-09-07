@@ -1,26 +1,19 @@
-"use client";
-
-import React from "react";
-import {
-  Sheet,
-  SheetContent,
-  SheetDescription,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from "@/components/ui/sheet";
-import { Button } from "@/components/ui/button";
-
-export function Footer() {
+export function Aspects() {
   return (
-    <footer className="z-20 w-full h-[100lvh]  transition-transform duration-300 ease-in-out translate-y-[20lvh] has-[:focus]:translate-y-[-50lvh] rounded-t-3xl">
-      <input type="radio" id="scales" name="scales" className="sr-only peer" />
+    <main className="pt-6">
+      <input
+        type="checkbox"
+        id="scales"
+        name="scales"
+        className="sr-only peer"
+      />
 
       <label
         htmlFor="scales"
-        className="block w-full h-20 rounded-t-xl bg-slate-900 hover:bg-gray-700 transition-colors text-center"
+        className="block w-full h-20 text-center transition-colors "
       >
-        <h1 className="text-xl border-b-2 bg-red-500">List of Aspects</h1>
+        <h1 className="inline-block text-xl">List of Aspects</h1>
+        <hr className="w-24 h-1 mx-auto my-2 bg-gray-100 border-0 rounded md:my-10 dark:bg-gray-700" />
       </label>
 
       <ul>
@@ -33,10 +26,10 @@ export function Footer() {
         <SheetTrigger asChild>
           <Button
             variant="ghost"
-            className="w-full h-20 rounded-t-xl bg-slate-900 hover:bg-gray-700 transition-colors"
+            className="w-full h-20 transition-colors rounded-t-xl bg-slate-900 hover:bg-gray-700"
           >
             <div className="flex flex-col items-center">
-              <div className="w-10 h-1 bg-gray-400 rounded-full mb-2" />
+              <div className="w-10 h-1 mb-2 bg-gray-400 rounded-full" />
               <span>Aspectos</span>
             </div>
           </Button>
@@ -55,6 +48,6 @@ export function Footer() {
           </SheetHeader>
         </SheetContent>
       </Sheet> */}
-    </footer>
+    </main>
   );
 }

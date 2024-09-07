@@ -1,4 +1,3 @@
-import { Footer } from "@/components/footer";
 import { Button } from "@/components/ui/button";
 import {
   Drawer,
@@ -15,13 +14,12 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-slate-800">
+    <main className="min-h-screen bg-slate-800 peer-checked/section:bg-red-500 peer-checked/section:blur-m ">
       <Navigation />
 
-      <h1 className="text-center text-3xl my-8 text-slate-400">Efemérides</h1>
+      <h1 className="my-8 text-3xl text-center text-slate-400">Efemérides</h1>
 
       <Zodiac />
-      <Footer />
     </main>
   );
 }
@@ -33,13 +31,13 @@ const Navigation = () => {
         <li className="border-b-2 border-slate-400">
           <Link href="/" className="flex flex-col items-center py-2">
             <ChartCircle size="24" />
-            <span className="text-sm mt-1">Chart</span>
+            <span className="mt-1 text-sm">Chart</span>
           </Link>
         </li>
         <li>
           <Link href="/" className="flex flex-col items-center py-2">
             <TableDocument size="24" />
-            <span className="text-sm mt-1">Table</span>
+            <span className="mt-1 text-sm">Table</span>
           </Link>
         </li>
       </ul>
@@ -77,7 +75,7 @@ const Zodiac = () => {
     // { name: "neptune", distance: 20, size: 1.1 },
   ];
   return (
-    <figure className="pile zodiac w-full h-full">
+    <figure className="w-full h-full pile zodiac">
       <svg className="w-full h-full" viewBox="0 0 100 100">
         <g strokeWidth="0.25" fill="none">
           <circle cx="50" cy="50" r="48" />
