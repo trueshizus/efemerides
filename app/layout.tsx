@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { Aspects } from "@/components/aspects";
+import { Navigation } from "@/components/navigation";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,9 +19,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className + " pile overflow-hidden"}>
-        <section>{children}</section>
-        <section className="w-full h-full z-20 bg-slate-900 transition-transform duration-300 ease-in-out translate-y-[92lvh] has-[:checked]:translate-y-[15lvh] rounded-t-3xl">
+        <section className="peer w-full h-full z-20 bg-slate-900 transition-transform duration-300 ease-in-out translate-y-[92lvh] focus-within:translate-y-[15lvh] rounded-t-3xl">
           <Aspects />
+        </section>
+
+        <section className=" w-full h-full transition duration-200	peer-has-[:focus]:brightness-50 peer-has-[:focus]:blur-sm  min-h-screen bg-slate-800 peer-checked/section:bg-red-500 peer-checked/section:blur-m ">
+          <Navigation />
+          {children}
         </section>
       </body>
     </html>

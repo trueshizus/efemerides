@@ -14,36 +14,13 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-slate-800 peer-checked/section:bg-red-500 peer-checked/section:blur-m ">
-      <Navigation />
-
+    <main>
       <h1 className="my-8 text-3xl text-center text-slate-400">Efemérides</h1>
 
       <Zodiac />
     </main>
   );
 }
-
-const Navigation = () => {
-  return (
-    <nav className="w-full border-b-2 border-green-500">
-      <ul className="flex center bg-slate-800 justify-evenly ">
-        <li className="border-b-2 border-slate-400">
-          <Link href="/" className="flex flex-col items-center py-2">
-            <ChartCircle size="24" />
-            <span className="mt-1 text-sm">Chart</span>
-          </Link>
-        </li>
-        <li>
-          <Link href="/" className="flex flex-col items-center py-2">
-            <TableDocument size="24" />
-            <span className="mt-1 text-sm">Table</span>
-          </Link>
-        </li>
-      </ul>
-    </nav>
-  );
-};
 
 const Sheet = () => (
   <Drawer>
