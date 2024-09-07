@@ -1,17 +1,3 @@
-import { Button } from "@/components/ui/button";
-import {
-  Drawer,
-  DrawerClose,
-  DrawerContent,
-  DrawerDescription,
-  DrawerFooter,
-  DrawerHeader,
-  DrawerTitle,
-  DrawerTrigger,
-} from "@/components/ui/drawer";
-import { ChartCircle, TableDocument } from "iconic-react";
-import Link from "next/link";
-
 export default function Home() {
   return (
     <main style={{ viewTransitionName: "page-content" }}>

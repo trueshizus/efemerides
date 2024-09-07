@@ -46,15 +46,11 @@ body {
 
 /* Apply the custom animation to the old and new page states */
 
-::view-transition-old(root) {
-  animation: 0.4s ease-in both move-out;
-}
-
-::view-transition-new(root) {
-  animation: 0.4s ease-in both move-in;
-}
-
 /* Layout */
+body {
+  container-type: inline-size;
+}
+
 .pile {
   display: grid;
   place-items: center;
@@ -151,41 +147,4 @@ body {
   --distance: -20px;
   --color: blue;
   animation: translation 11s linear infinite;
-}
-
-@keyframes translation {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes slide-from-right {
-  from {
-    transform: translateX(100%);
-  }
-}
-
-@keyframes slide-to-left {
-  to {
-    transform: translateX(-100%);
-  }
-}
-
-::view-transition-old(page-content) {
-  animation: 300ms ease-in-out both slide-to-left;
-}
-
-::view-transition-new(page-content) {
-  animation: 300ms ease-in-out both slide-from-right;
-}
-
-::view-transition-old(static-nav),
-::view-transition-new(static-nav),
-::view-transition-old(static-sheet),
-::view-transition-new(static-sheet) {
-  animation: none;
-  mix-blend-mode: normal;
 }

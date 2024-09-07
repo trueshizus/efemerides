@@ -1,7 +1,8 @@
 "use client";
 
 import { ChartCircle, TableDocument } from "iconic-react";
-import { Link } from "next-view-transitions";
+import Link from "next/link";
+
 import { usePathname } from "next/navigation";
 
 const navItems = [
