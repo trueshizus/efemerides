@@ -37,11 +37,11 @@ const Celestial: React.FC<CelestialProps> = ({
   return (
     <Sphere
       ref={ref}
-      position={[initialX, 0, initialZ]}
+      position={[initialX, 0.3, initialZ]}
       args={[size, 32, 32]}
       rotation={[Math.PI / -2, 0, 0]}
     >
-      <meshStandardMaterial map={map} />
+      <meshStandardMaterial map={map} metalness={0.2} roughness={0.8} />
     </Sphere>
   );
 };
@@ -65,8 +65,13 @@ export function ZodiacSceneComponent() {
     <Canvas
       camera={{ position: [0, 10, 0], fov: 50, up: [0, 0, -1], far: 1000 }}
     >
-      <ambientLight intensity={2} />
-      <pointLight position={[10, 10, 10]} />
+      <ambientLight intensity={0.3} />
+      <pointLight
+        position={[0, 1.7, 0]}
+        intensity={6}
+        distance={10}
+        decay={2}
+      />
       <ZodiacCircle radius={5.5} />
       {celestials.map((celestial) => (
         <Celestial key={celestial.name} {...celestial} />
