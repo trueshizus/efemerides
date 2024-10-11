@@ -3,7 +3,7 @@
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, Stars } from "@react-three/drei";
 import Planet from "./planet";
-import ZodiacRing from "./zodiac-ring";
+// import ZodiacRing from "./zodiac-ring";
 
 export default function Scene() {
   return (
@@ -17,7 +17,7 @@ export default function Scene() {
         <meshStandardMaterial color="#303030" />
       </mesh>
       <Planet position={[0, 0, 0]} />
-      <ZodiacRing />
+      {/* <ZodiacRing /> */}
     </Canvas>
   );
 }
