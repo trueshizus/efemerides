@@ -1,5 +1,6 @@
 import { Suspense } from "react";
 import Scene from "@/components/escene";
+import { ZodiacSceneComponent } from "@/components/zodiac-scene";
 export default function Home() {
   return (
     <main className="h-screen" style={{ viewTransitionName: "page-content" }}>
@@ -8,7 +9,7 @@ export default function Home() {
       </h1>
       <Suspense fallback={<div>Loading...</div>}>
         <div className="h-3/5">
-          <Scene />
+          <ZodiacSceneComponent />
         </div>
       </Suspense>
     </main>
