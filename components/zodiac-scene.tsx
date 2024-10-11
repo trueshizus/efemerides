@@ -35,7 +35,12 @@ const Planet: React.FC<PlanetProps> = ({
   const initialZ = distance !== 0 ? Math.cos(angle) * distance : 0;
 
   return (
-    <Sphere ref={ref} position={[initialX, 0, initialZ]} args={[size, 32, 32]}>
+    <Sphere
+      ref={ref}
+      position={[initialX, 0, initialZ]}
+      args={[size, 32, 32]}
+      rotation={[Math.PI / 2, 0, 0]}
+    >
       <meshStandardMaterial map={map} />
     </Sphere>
   );
