@@ -22,7 +22,9 @@ const Planet: React.FC<PlanetProps> = ({
 
   useFrame(({ clock }) => {
     if (ref.current && distance !== 0) {
-      const t = clock.getElapsedTime();
+      const baseSpeed = 1; // Adjust this value to change overall rotation speed
+      const speed = baseSpeed / distance; // Inverse square root relationship
+      const t = clock.getElapsedTime() * speed;
       ref.current.position.x = Math.sin(t + angle) * distance;
       ref.current.position.z = Math.cos(t + angle) * distance;
     }
@@ -42,7 +44,7 @@ const Planet: React.FC<PlanetProps> = ({
 Planet.displayName = "Planet";
 
 const ZodiacCircle = ({ radius = 5 }: { radius?: number }) => {
-  const texture = new THREE.TextureLoader().load("/mandala.svg");
+  const texture = new THREE.TextureLoader().load("/man.svg");
 
   return (
     <Circle args={[radius, 64]} rotation={[-Math.PI / 2, 0, 0]}>
