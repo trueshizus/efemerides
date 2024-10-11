@@ -20,15 +20,15 @@ const Planet: React.FC<PlanetProps> = ({
   const ref = useRef<THREE.Mesh>(null);
   const map = useTexture(texture);
 
-  useFrame(({ clock }) => {
-    if (ref.current && distance !== 0) {
-      const baseSpeed = 1; // Adjust this value to change overall rotation speed
-      const speed = baseSpeed / distance; // Inverse square root relationship
-      const t = clock.getElapsedTime() * speed;
-      ref.current.position.x = Math.sin(t + angle) * distance;
-      ref.current.position.z = Math.cos(t + angle) * distance;
-    }
-  });
+  // useFrame(({ clock }) => {
+  //   if (ref.current && distance !== 0) {
+  //     const baseSpeed = 1; // Adjust this value to change overall rotation speed
+  //     const speed = baseSpeed / distance; // Inverse square root relationship
+  //     const t = clock.getElapsedTime() * speed;
+  //     ref.current.position.x = Math.sin(t + angle) * distance;
+  //     ref.current.position.z = Math.cos(t + angle) * distance;
+  //   }
+  // });
 
   // Calculate initial position based on angle
   const initialX = distance !== 0 ? Math.sin(angle) * distance : 0;
@@ -65,16 +65,22 @@ export function ZodiacSceneComponent() {
       <ambientLight intensity={2} />
       <pointLight position={[10, 10, 10]} />
       <ZodiacCircle radius={5.5} />
-      <Planet size={0.35} distance={0} texture="/celestials/earth.jpg" />
+      <Planet size={0.34} distance={0} texture="/celestials/earth.jpg" />
       <Planet
-        size={0.2}
-        distance={1.9}
-        angle={Math.PI / 0.5}
+        size={0.29}
+        distance={2.8}
+        angle={Math.PI / 1.9}
         texture="/celestials/mars.jpg"
       />
       <Planet
+        size={0.38}
+        distance={2.1}
+        angle={Math.PI / 1.25}
+        texture="/celestials/jupiter.jpg"
+      />
+      <Planet
         size={0.2}
-        distance={1.99}
+        distance={1}
         angle={Math.PI / 1}
         texture="/celestials/mercury.jpg"
       />
@@ -84,12 +90,7 @@ export function ZodiacSceneComponent() {
         angle={Math.PI / 1.5}
         texture="/celestials/venus.jpg"
       />
-      <Planet
-        size={0.2}
-        distance={2.1}
-        angle={Math.PI / 1.8}
-        texture="/celestials/jupiter.jpg"
-      />
+
       <Planet
         size={0.2}
         distance={2.2}
