@@ -20,15 +20,15 @@ const Planet: React.FC<PlanetProps> = ({
   const ref = useRef<THREE.Mesh>(null);
   const map = useTexture(texture);
 
-  // useFrame(({ clock }) => {
-  //   if (ref.current && distance !== 0) {
-  //     const baseSpeed = 1; // Adjust this value to change overall rotation speed
-  //     const speed = baseSpeed / distance; // Inverse square root relationship
-  //     const t = clock.getElapsedTime() * speed;
-  //     ref.current.position.x = Math.sin(t + angle) * distance;
-  //     ref.current.position.z = Math.cos(t + angle) * distance;
-  //   }
-  // });
+  useFrame(({ clock }) => {
+    if (ref.current && distance !== 0) {
+      const baseSpeed = 1; // Adjust this value to change overall rotation speed
+      const speed = baseSpeed / distance; // Inverse square root relationship
+      const t = clock.getElapsedTime() * speed;
+      ref.current.position.x = Math.sin(t + angle) * distance;
+      ref.current.position.z = Math.cos(t + angle) * distance;
+    }
+  });
 
   // Calculate initial position based on angle
   const initialX = distance !== 0 ? Math.sin(angle) * distance : 0;
