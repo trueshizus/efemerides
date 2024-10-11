@@ -18,7 +18,7 @@ export const Navigation = () => {
       className="w-full pt-2 border-b-2 border-slate-600"
       style={{ viewTransitionName: "static-nav" }}
     >
-      <ul className="flex justify-evenly bg-slate-800">
+      <ul className="flex justify-evenly ">
         {navItems.map(({ href, label, icon }) => {
           const isActive = pathname === href;
           return (
