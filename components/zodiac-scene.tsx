@@ -54,11 +54,13 @@ export function ZodiacSceneComponent() {
     <Canvas
       camera={{ position: [0, 10, 0], fov: 50, up: [0, 0, -1], far: 1000 }}
     >
-      <ambientLight intensity={0.5} />
+      <ambientLight intensity={2} />
       <pointLight position={[10, 10, 10]} />
       <ZodiacCircle radius={5.5} />
-      <Planet size={0.5} distance={0} textureUrl="/celestials/earth.jpg" />
-      <Planet size={0.3} distance={3} textureUrl="/celestials/mars.jpg" />
+      <Planet size={0.35} distance={0} textureUrl="/celestials/earth.jpg" />
+      <Planet size={0.2} distance={1.9} textureUrl="/celestials/mars.jpg" />
+      <Planet size={0.2} distance={1.99} textureUrl="/celestials/mercury.jpg" />
+      <Planet size={0.2} distance={1.3} textureUrl="/celestials/mars.jpg" />
       <OrbitControls enableZoom={false} />
     </Canvas>
   );
