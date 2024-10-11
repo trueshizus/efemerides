@@ -16,11 +16,19 @@ const Planet = React.forwardRef<
 
 Planet.displayName = "Planet";
 
-const ZodiacCircle = () => (
-  <Circle args={[5, 64]} rotation={[-Math.PI / 2, 0, 0]}>
-    <meshBasicMaterial color="#4a5568" side={THREE.DoubleSide} />
-  </Circle>
-);
+const ZodiacCircle = ({ radius = 5 }: { radius?: number }) => {
+  const texture = new THREE.TextureLoader().load("/mandala.svg");
+
+  return (
+    <Circle args={[radius, 64]} rotation={[-Math.PI / 2, 0, 0]}>
+      <meshBasicMaterial
+        map={texture}
+        transparent={true}
+        side={THREE.DoubleSide}
+      />
+    </Circle>
+  );
+};
 
 const OrbitingPlanet = () => {
   const ref = useRef<THREE.Mesh>(null);
@@ -41,7 +49,7 @@ export function ZodiacSceneComponent() {
     >
       <ambientLight intensity={0.5} />
       <pointLight position={[10, 10, 10]} />
-      <ZodiacCircle />
+      <ZodiacCircle radius={5.5} />
       <Planet position={[0, 0, 0]} color="#4299e1" size={0.5} />
       <OrbitingPlanet />
       {/* <gridHelper
