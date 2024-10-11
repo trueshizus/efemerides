@@ -3,15 +3,15 @@ import React, { useRef } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Sphere, Circle, OrbitControls, useTexture } from "@react-three/drei";
 import * as THREE from "three";
-
-interface PlanetProps {
+import { celestials } from "./celestials";
+interface CelestialProps {
   size: number;
   distance: number;
   texture: string;
   angle?: number; // New prop for starting angle in radians
 }
 
-const Planet: React.FC<PlanetProps> = ({
+const Celestial: React.FC<CelestialProps> = ({
   size,
   distance,
   texture,
@@ -46,8 +46,6 @@ const Planet: React.FC<PlanetProps> = ({
   );
 };
 
-Planet.displayName = "Planet";
-
 const ZodiacCircle = ({ radius = 5 }: { radius?: number }) => {
   const texture = new THREE.TextureLoader().load("/man.svg");
 
@@ -70,92 +68,9 @@ export function ZodiacSceneComponent() {
       <ambientLight intensity={2} />
       <pointLight position={[10, 10, 10]} />
       <ZodiacCircle radius={5.5} />
-      <Planet size={0.34} distance={0} texture="/celestials/earth.jpg" />
-      <Planet
-        size={0.29}
-        distance={2.8}
-        angle={Math.PI / 1.9}
-        texture="/celestials/mars.jpg"
-      />
-      <Planet
-        size={0.38}
-        distance={2.65}
-        angle={Math.PI / 1.24}
-        texture="/celestials/jupiter.jpg"
-      />
-      <Planet
-        size={0.28}
-        distance={2.2}
-        angle={Math.PI / 1.07}
-        texture="/celestials/saturn.jpg"
-      />
-      <Planet
-        size={0.24}
-        distance={2.5}
-        angle={Math.PI / 0.9}
-        texture="/celestials/pluto.jpg"
-      />
-      <Planet
-        size={0.27}
-        distance={2.1}
-        angle={Math.PI * 1.34}
-        texture="/celestials/neptune.jpg"
-      />
-
-      <Planet
-        size={0.29}
-        distance={2.8}
-        angle={Math.PI * 1.37}
-        texture="/celestials/uranus.jpg"
-      />
-
-      <Planet
-        size={0.19}
-        distance={2.6}
-        angle={Math.PI * 1.53}
-        texture="/celestials/chiron.jpg"
-      />
-
-      <Planet
-        size={0.21}
-        distance={2.8}
-        angle={Math.PI * 1.63}
-        texture="/celestials/moon.jpg"
-      />
-
-      <Planet
-        size={0.19}
-        distance={2.1}
-        angle={Math.PI * 1.72}
-        texture="/celestials/lilith.jpg"
-      />
-
-      <Planet
-        size={0.195}
-        distance={1.9}
-        angle={Math.PI * 1.8}
-        texture="/celestials/north_node.jpg"
-      />
-
-      <Planet
-        size={0.24}
-        distance={2.2}
-        angle={Math.PI * 1.95}
-        texture="/celestials/mercury.jpg"
-      />
-      <Planet
-        size={0.26}
-        distance={2.1}
-        angle={Math.PI * 2.1}
-        texture="/celestials/venus.jpg"
-      />
-
-      <Planet
-        size={0.4}
-        distance={2.7}
-        angle={Math.PI * 2.34}
-        texture="/celestials/sun.jpg"
-      />
+      {celestials.map((celestial) => (
+        <Celestial key={celestial.name} {...celestial} />
+      ))}
 
       <OrbitControls enableZoom={false} />
     </Canvas>
