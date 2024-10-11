@@ -1,7 +1,7 @@
 import React from "react";
 import { useTexture } from "@react-three/drei";
 
-export function Planet(props: any) {
+export default function Planet(props: any) {
   const texture = useTexture("/celestials/earth.png");
 
   return (

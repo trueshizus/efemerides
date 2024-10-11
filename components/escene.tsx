@@ -2,7 +2,7 @@
 
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, Stars } from "@react-three/drei";
-import { Planet } from "./planet";
+import Planet from "./planet";
 
 export default function Scene() {
   return (
