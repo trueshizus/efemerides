@@ -56,8 +56,8 @@ export function ZodiacSceneComponent() {
       <ambientLight intensity={0.5} />
       <pointLight position={[10, 10, 10]} />
       <ZodiacCircle radius={5.5} />
-      <Planet size={0.5} distance={0} color="#4299e1" />
-      <Planet size={0.2} distance={3} color="#f6ad55" />
+      <Planet size={0.35} distance={0} color="#4299e1" />
+      <Planet size={0.15} distance={2} color="#f6ad55" />
       <OrbitControls enableZoom={false} />
     </Canvas>
   );
