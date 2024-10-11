@@ -1,17 +1,18 @@
 "use client";
 import React, { useRef } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { Sphere, Circle, OrbitControls } from "@react-three/drei";
+import { Sphere, Circle, OrbitControls, useTexture } from "@react-three/drei";
 import * as THREE from "three";
 
 interface PlanetProps {
   size: number;
   distance: number;
-  color: string;
+  textureUrl: string;
 }
 
-const Planet: React.FC<PlanetProps> = ({ size, distance, color }) => {
+const Planet: React.FC<PlanetProps> = ({ size, distance, textureUrl }) => {
   const ref = useRef<THREE.Mesh>(null);
+  const texture = useTexture(textureUrl);
 
   useFrame(({ clock }) => {
     if (ref.current && distance !== 0) {
@@ -27,7 +28,7 @@ const Planet: React.FC<PlanetProps> = ({ size, distance, color }) => {
       position={distance === 0 ? [0, 0, 0] : [distance, 0, 0]}
       args={[size, 32, 32]}
     >
-      <meshStandardMaterial color={color} />
+      <meshStandardMaterial map={texture} />
     </Sphere>
   );
 };
@@ -56,8 +57,8 @@ export function ZodiacSceneComponent() {
       <ambientLight intensity={0.5} />
       <pointLight position={[10, 10, 10]} />
       <ZodiacCircle radius={5.5} />
-      <Planet size={0.35} distance={0} color="#4299e1" />
-      <Planet size={0.15} distance={2} color="#f6ad55" />
+      <Planet size={0.5} distance={0} textureUrl="/celestials/earth.jpg" />
+      <Planet size={0.3} distance={3} textureUrl="/celestials/mars.jpg" />
       <OrbitControls enableZoom={false} />
     </Canvas>
   );
