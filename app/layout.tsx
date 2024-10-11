@@ -33,7 +33,7 @@ export default function RootLayout({
         <section className="lg:col-start-1 col-start-1 row-start-1 order-2 peer w-full lg:w-auto h-screen  transition-transform duration-300 ease-in-out translate-y-[92svh] lg:translate-y-0 focus-within:translate-y-[15lvh]">
           <Aspects />
         </section>
-        <section className="col-start-1 row-start-1">
+        <section className="lg:col-start-2 col-start-1 row-start-1">
           <Background />
         </section>
       </body>

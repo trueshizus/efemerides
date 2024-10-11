@@ -15,7 +15,7 @@ export const Navigation = () => {
 
   return (
     <nav
-      className="w-full pt-2 border-b-2 border-slate-600"
+      className="w-full pt-2 border-b-2 border-slate-600 bg-black opacity-50"
       style={{ viewTransitionName: "static-nav" }}
     >
       <ul className="flex justify-evenly ">
