@@ -19,17 +19,21 @@ export default function RootLayout({
   return (
     // <ViewTransitions>
     <html lang="en">
-      <body className={inter.className + " pile overflow-hidden"}>
+      <body
+        className={
+          inter.className + " overflow-hidden grid grid-cols-1 lg:grid-cols-2"
+        }
+      >
+        <section className="lg:col-start-2 col-start-1 row-start-1 order-2 overflow-hidden w-full lg:w-auto h-screen transition duration-200	peer-has-[:focus]:brightness-50 peer-has-[:focus]:blur-sm  min-h-screen bg-slate-800 peer-checked/section:bg-red-500 peer-checked/section:blur-m ">
+          <Navigation />
+          {children}
+        </section>
+
         <section
-          className="peer w-full h-screen z-20 bg-slate-900 transition-transform duration-300 ease-in-out translate-y-[92lvh] focus-within:translate-y-[15lvh] rounded-t-3xl"
+          className="lg:col-start-1 col-start-1 row-start-1  peer w-full lg:w-auto h-screen  transition-transform duration-300 ease-in-out translate-y-[92svh] lg:translate-y-0 focus-within:translate-y-[15lvh]"
           style={{ viewTransitionName: "static-sheet" }}
         >
           <Aspects />
-        </section>
-
-        <section className="overflow-hidden w-full h-screen transition duration-200	peer-has-[:focus]:brightness-50 peer-has-[:focus]:blur-sm  min-h-screen bg-slate-800 peer-checked/section:bg-red-500 peer-checked/section:blur-m ">
-          <Navigation />
-          {children}
         </section>
       </body>
     </html>
