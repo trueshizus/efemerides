@@ -62,6 +62,8 @@ const config: Config = {
           "4": "hsl(var(--chart-4))",
           "5": "hsl(var(--chart-5))",
         },
+        "midnight-slate": "#24283A",
+        "sky-blue": "#B1ECFF",
       },
     },
   },

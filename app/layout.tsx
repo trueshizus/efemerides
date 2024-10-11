@@ -30,7 +30,7 @@ export default function RootLayout({
           {children}
         </section>
 
-        <section className="lg:col-start-1 col-start-1 row-start-1 order-2 peer w-full lg:w-auto h-screen  transition-transform duration-300 ease-in-out translate-y-[92svh] lg:translate-y-0 focus-within:translate-y-[15lvh]">
+        <section className="lg:col-start-1 col-start-1 row-start-1 order-2 peer w-full lg:w-auto h-screen  transition-transform duration-300 ease-in-out translate-y-[92svh] lg:translate-y-0 focus-within:translate-y-[15lvh] z-10">
           <Aspects />
         </section>
         <section className="lg:col-start-2 col-start-1 row-start-1">
