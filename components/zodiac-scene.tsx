@@ -58,13 +58,20 @@ const ZodiacCircle = ({ radius = 5 }: { radius?: number }) => {
           side={THREE.DoubleSide}
         />
       </Circle>
-      {/* <Circle
+      <Circle
         args={[radius, 64]}
         rotation={[-Math.PI / 2, 0, 0]}
-        position={[0, 0, -0.01]}
+        position={[0, -0.2, 0]}
+        receiveShadow={true}
       >
-        <meshBasicMaterial color="blue" side={THREE.DoubleSide} />
-      </Circle> */}
+        <meshStandardMaterial
+          transparent={true}
+          opacity={0.2}
+          metalness={0.5}
+          roughness={0.1}
+          side={THREE.DoubleSide}
+        />
+      </Circle>
     </>
   );
 };
@@ -72,6 +79,7 @@ const ZodiacCircle = ({ radius = 5 }: { radius?: number }) => {
 export function ZodiacSceneComponent() {
   return (
     <Canvas
+      shadows
       camera={{ position: [0, 10, 0], fov: 50, up: [0, 0, -1], far: 1000 }}
     >
       <ambientLight intensity={0.3} />
@@ -81,66 +89,11 @@ export function ZodiacSceneComponent() {
         distance={10}
         decay={2}
       />
-      <ZodiacCircle radius={4.2} />
       {celestials.map((celestial) => (
         <Celestial key={celestial.name} {...celestial} />
       ))}
-
+      <ZodiacCircle radius={4.2} />
       <OrbitControls enableZoom={false} />
     </Canvas>
   );
 }
-
-export const ZodiacSvg = () => {
-  return (
-    <svg className="w-full h-full" viewBox="0 0 100 100">
-      <g strokeWidth="1" fill="none" stroke="white">
-        <circle cx="50" cy="50" r="48" />
-        <circle cx="50" cy="50" r="40" />
-        <circle cx="50" cy="50" r="38" />
-
-        <circle cx="50" cy="50" r="15" />
-        <circle cx="50" cy="50" r="5" />
-      </g>
-      <DashCircle />
-    </svg>
-  );
-};
-
-const DashCircle = () => {
-  const dashRadius = 10; // Assuming this is defined somewhere in the component.
-
-  const createLine = (i: number, orientation: number) => {
-    const rotation = i === 0 && orientation === -1 ? 180 : i * orientation;
-    const isMajorTick = i % 30 === 0;
-    const isMediumTick = i % 6 === 0;
-
-    const x1 = isMajorTick ? 2 : dashRadius;
-    const x2 = isMajorTick ? 35 : dashRadius + 2;
-    const strokeWidth = isMediumTick ? 1 : 0.5;
-
-    return (
-      <line
-        key={`${i}-${orientation}`}
-        x1={x1}
-        y1="50"
-        x2={x2}
-        y2="50"
-        strokeWidth={strokeWidth}
-        stroke="white"
-        transform={`rotate(${rotation} 50 50)`}
-      />
-    );
-  };
-
-  return (
-    <>
-      {[...Array(180)].map((_, i) => (
-        <>
-          {createLine(i, 1)}
-          {createLine(i, -1)}
-        </>
-      ))}
-    </>
-  );
-};
