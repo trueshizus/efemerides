@@ -8,7 +8,7 @@ export default function Home() {
         Efemérides
       </h1>
       <Suspense fallback={<div>Loading...</div>}>
-        <div className="h-3/5">
+        <div className="w-full aspect-square">
           <ZodiacSceneComponent />
         </div>
       </Suspense>

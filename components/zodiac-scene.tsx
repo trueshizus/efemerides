@@ -37,6 +37,7 @@ const Celestial: React.FC<CelestialProps> = ({
   return (
     <Sphere
       ref={ref}
+      castShadow={true}
       position={[initialX, 0.3, initialZ]}
       args={[size, 32, 32]}
       rotation={[Math.PI / -2, 0, 0]}
@@ -51,7 +52,11 @@ const ZodiacCircle = ({ radius = 5 }: { radius?: number }) => {
 
   return (
     <>
-      <Circle args={[radius, 64]} rotation={[-Math.PI / 2, 0, 0]}>
+      <Circle
+        args={[radius, 64]}
+        rotation={[-Math.PI / 2, 0, 0]}
+        receiveShadow={true}
+      >
         <meshBasicMaterial
           map={texture}
           transparent={true}
@@ -61,7 +66,7 @@ const ZodiacCircle = ({ radius = 5 }: { radius?: number }) => {
       <Circle
         args={[radius, 64]}
         rotation={[-Math.PI / 2, 0, 0]}
-        position={[0, -0.2, 0]}
+        position={[0, 0, 0]}
         receiveShadow={true}
       >
         <meshStandardMaterial
@@ -82,12 +87,13 @@ export function ZodiacSceneComponent() {
       shadows
       camera={{ position: [0, 10, 0], fov: 50, up: [0, 0, -1], far: 1000 }}
     >
-      <ambientLight intensity={0.3} />
+      <ambientLight intensity={0.2} />
       <pointLight
         position={[0, 1.7, 0]}
-        intensity={6}
-        distance={10}
+        intensity={20}
+        distance={5}
         decay={2}
+        castShadow={true}
       />
       {celestials.map((celestial) => (
         <Celestial key={celestial.name} {...celestial} />
